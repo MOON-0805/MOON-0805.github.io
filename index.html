@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI项目作品集 | 钟莹莹</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #4361ee;
+            --secondary: #3a0ca3;
+            --accent: #f72585;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --gray: #6c757d;
+            --border-radius: 12px;
+            --box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif; line-height: 1.6; color: var(--dark); background-color: #f9fafc; scroll-behavior: smooth; }
+        .container { width: 90%; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        header { background: linear-gradient(135deg, var(--primary), var(--secondary)); color: white; padding: 80px 0 60px; text-align: center; position: relative; overflow: hidden; }
+        header::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.1)"/></svg>'); background-size: cover; }
+        .header-content { position: relative; z-index: 2; }
+        .logo { font-size: 2.8rem; margin-bottom: 15px; display: flex; justify-content: center; align-items: center; gap: 15px; }
+        .logo i { color: var(--accent); }
+        .tagline { font-size: 1.3rem; opacity: 0.9; margin-bottom: 30px; max-width: 700px; margin-left: auto; margin-right: auto; }
+        nav { background-color: white; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); position: sticky; top: 0; z-index: 1000; }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; padding: 15px 0; }
+        .nav-links { display: flex; gap: 30px; }
+        .nav-links a { color: var(--dark); text-decoration: none; font-weight: 500; transition: var(--transition); position: relative; }
+        .nav-links a:hover { color: var(--primary); }
+        .nav-links a::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 3px; background-color: var(--accent); transition: var(--transition); }
+        .nav-links a:hover::after { width: 100%; }
+        section { padding: 80px 0; }
+        .section-title { text-align: center; margin-bottom: 60px; position: relative; }
+        .section-title h2 { font-size: 2.5rem; color: var(--secondary); display: inline-block; margin-bottom: 15px; }
+        .section-title h2::after { content: ''; position: absolute; width: 80px; height: 4px; background-color: var(--accent); bottom: -10px; left: 50%; transform: translateX(-50%); border-radius: 2px; }
+        .section-title p { color: var(--gray); max-width: 700px; margin: 20px auto 0; }
+        .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 40px; margin-top: 40px; }
+        .project-card { background-color: white; border-radius: var(--border-radius); overflow: hidden; box-shadow: var(--box-shadow); transition: var(--transition); }
+        .project-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15); }
+        .project-img { height: 220px; background-color: #e9ecef; display: flex; align-items: center; justify-content: center; color: var(--gray); font-size: 3rem; position: relative; overflow: hidden; }
+        .project-img::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.3)); }
+        .project-img img { width: 100%; height: 100%; object-fit: cover; }
+        .project-content { padding: 30px; }
+        .project-title { font-size: 1.5rem; margin-bottom: 15px; color: var(--secondary); display: flex; align-items: center; gap: 10px; }
+        .project-tags { display: flex; flex-wrap: wrap; gap: 10px; margin: 20px 0; }
+        .tag { background-color: #eef2ff; color: var(--primary); padding: 6px 12px; border-radius: 20px; font-size: 0.85rem; font-weight: 500; }
+        .project-actions { display: flex; gap: 15px; margin-top: 25px; }
+        .btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; border-radius: 30px; text-decoration: none; font-weight: 500; transition: var(--transition); border: none; cursor: pointer; }
+        .btn-primary { background-color: var(--primary); color: white; }
+        .btn-primary:hover { background-color: var(--secondary); color: white; }
+        .btn-outline { background-color: transparent; color: var(--primary); border: 2px solid var(--primary); }
+        .btn-outline:hover { background-color: var(--primary); color: white; }
+        .skills-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin-top: 40px; }
+        .skill-card { background-color: white; border-radius: var(--border-radius); padding: 25px; width: 220px; text-align: center; box-shadow: var(--box-shadow); transition: var(--transition); }
+        .skill-card:hover { transform: translateY(-5px); }
+        .skill-icon { font-size: 2.5rem; color: var(--primary); margin-bottom: 15px; }
+        footer { background-color: var(--dark); color: white; padding: 60px 0 30px; }
+        .footer-content { display: flex; flex-direction: column; align-items: center; text-align: center; }
+        .contact-info { margin: 30px 0; display: flex; flex-direction: column; gap: 15px; }
+        .contact-info a { color: white; text-decoration: none; display: flex; align-items: center; gap: 10px; justify-content: center; }
+        .contact-info a:hover { color: var(--accent); }
+        .copyright { margin-top: 40px; padding-top: 20px; border-top: 1px solid rgba(255, 255, 255, 0.1); width: 100%; color: rgba(255, 255, 255, 0.7); font-size: 0.9rem; }
+        @media (max-width: 768px) {
+            .nav-container { flex-direction: column; gap: 15px; }
+            .nav-links { flex-wrap: wrap; justify-content: center; gap: 20px; }
+            .projects-grid { grid-template-columns: 1fr; }
+            .section-title h2 { font-size: 2rem; }
+            header { padding: 60px 0 40px; }
+            section { padding: 60px 0; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <i class="fas fa-robot"></i>
+                <h1>AI项目作品集</h1>
+            </div>
+            <p class="tagline">展示AI工具应用与项目实践能力，包含Coze智能体、即梦AI动画与DeepSeek API系统开发等项目经验。</p>
+            <div class="project-actions">
+                <a href="#projects" class="btn btn-primary">
+                    <i class="fas fa-eye"></i> 查看项目
+                </a>
+                <a href="#contact" class="btn btn-outline" style="color: white; border-color: white;">
+                    <i class="fas fa-envelope"></i> 联系我
+                </a>
+            </div>
+        </div>
+    </header>
+    
+    <nav>
+        <div class="container nav-container">
+            <div class="logo" style="font-size: 1.5rem;">
+                <i class="fas fa-code"></i>
+                <span style="color: var(--dark);">AI项目作品集</span>
+            </div>
+            <div class="nav-links">
+                <a href="#projects">项目展示</a>
+                <a href="#skills">核心技能</a>
+                <a href="#about">关于我</a>
+                <a href="#contact">联系方式</a>
+            </div>
+        </div>
+    </nav>
+    
+    <section id="projects">
+        <div class="container">
+            <div class="section-title">
+                <h2>项目展示</h2>
+                <p>以下是我使用AI工具完成的核心项目，展示了从概念设计到实现部署的全流程能力。</p>
+            </div>
+            
+            <div class="projects-grid">
+                <!-- 项目1: AImoon英语陪练 -->
+                <div class="project-card">
+                    <div class="project-img" style="background: linear-gradient(135deg, #4cc9f0, #4361ee);">
+                        <i class="fas fa-comments" style="color: white; z-index: 2; position: relative;"></i>
+                        <div style="position: absolute; top: 10px; left: 10px; background: rgba(0,0,0,0.6); color: white; padding: 5px 10px; border-radius: 4px; font-size: 0.8rem; z-index: 3;">
+                            Coze平台
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">
+                            <i class="fas fa-graduation-cap"></i> AI英语学习陪练 "AImoon"
+                        </h3>
+                        <p>在Coze平台搭建的、面向初中生的英语学习陪练智能体。具备语音对话、语法讲解与学习资源推荐功能，通过结构化Prompt工程实现自然、口语化的学习交互体验。</p>
+                        
+                        <div class="project-tags">
+                            <span class="tag">Coze平台</span>
+                            <span class="tag">Prompt工程</span>
+                            <span class="tag">DeepSeek-R1</span>
+                            <span class="tag">语音交互</span>
+                            <span class="tag">教育科技</span>
+                        </div>
+                        
+                        <div class="project-actions">
+                            <a href="#project1-details" class="btn btn-primary" onclick="showProjectDetails(1)">
+                                <i class="fas fa-info-circle"></i> 项目详情
+                            </a>
+                            <a href="https://www.coze.cn/s/KdtdlD47z4w/" target="_blank" class="btn btn-outline">
+                                <i class="fas fa-external-link-alt"></i> 体验智能体
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 项目2: 番茄保卫战 -->
+                <div class="project-card">
+                    <div class="project-img" style="background: linear-gradient(135deg, #f72585, #7209b7);">
+                        <i class="fas fa-gamepad" style="color: white; z-index: 2; position: relative;"></i>
+                        <div style="position: absolute; top: 10px; left: 10px; background: rgba(0,0,0,0.6); color: white; padding: 5px 10px; border-radius: 4px; font-size: 0.8rem; z-index: 3;">
+                            即梦AI + 动画
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">
+                            <i class="fas fa-gamepad"></i> "番茄保卫战"游戏动画
+                        </h3>
+                        <p>使用即梦AI生成游戏界面素材，独立完成角色设计、动态效果与交互演示，制作10秒游戏界面动画视频，展示游戏机制与AIGC在视觉设计中的应用能力。</p>
+                        
+                        <div class="project-tags">
+                            <span class="tag">即梦AI</span>
+                            <span class="tag">AIGC</span>
+                            <span class="tag">游戏界面设计</span>
+                            <span class="tag">动效设计</span>
+                            <span class="tag">视频制作</span>
+                        </div>
+                        
+                        <div class="project-actions">
+                            <a href="#project2-details" class="btn btn-primary" onclick="showProjectDetails(2)">
+                                <i class="fas fa-info-circle"></i> 项目详情
+                            </a>
+                            <a href="https://jimeng.jianying.com/s/zr4wtA_vjuw/" target="_blank" class="btn btn-outline">
+                                <i class="fas fa-external-link-alt"></i> 访问主页
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 项目3: DeepSeek API系统 -->
+                <div class="project-card">
+                    <div class="project-img" style="background: linear-gradient(135deg, #4ade80, #0d9488);">
+                        <i class="fas fa-cogs" style="color: white; z-index: 2; position: relative;"></i>
+                        <div style="position: absolute; top: 10px; left: 10px; background: rgba(0,0,0,0.6); color: white; padding: 5px 10px; border-radius: 4px; font-size: 0.8rem; z-index: 3;">
+                            Python + API
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">
+                            <i class="fas fa-server"></i> 基于DeepSeek API的智能Agent系统
+                        </h3>
+                        <p>采用“本地优先+API补充”混合架构的智能Agent系统。实现任务分类、智能路由与错误处理，完成从需求分析、模块化开发到部署的全流程工程实践。</p>
+                        
+                        <div class="project-tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">DeepSeek API</span>
+                            <span class="tag">系统架构</span>
+                            <span class="tag">任务调度</span>
+                            <span class="tag">Git/GitHub</span>
+                        </div>
+                        
+                        <div class="project-actions">
+                            <a href="#project3-details" class="btn btn-primary" onclick="showProjectDetails(3)">
+                                <i class="fas fa-info-circle"></i> 项目详情
+                            </a>
+                            <a href="https://github.com/MOON-0805/smart-ai-agent" target="_blank" class="btn btn-outline">
+                                <i class="fas fa-external-link-alt"></i> 查看代码
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="skills" style="background-color: #f0f4ff;">
+        <div class="container">
+            <div class="section-title">
+                <h2>核心技能</h2>
+                <p>通过项目实践积累的AI工具应用、开发与设计能力</p>
+            </div>
+            
+            <div class="skills-container">
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>AI应用开发</h3>
+                    <p>熟悉Coze、DeepSeek API、LangChain，具备智能体系统设计与Prompt工程能力。</p>
+                </div>
+                
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3>AIGC与视觉设计</h3>
+                    <p>熟练使用即梦AI、Stable Diffusion等工具进行内容生成，具备游戏界面与动效设计能力。</p>
+                </div>
+                
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>编程与工程</h3>
+                    <p>熟练掌握Python，熟悉Git、Linux、API设计，具备模块化开发与系统部署经验。</p>
+                </div>
+                
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-gamepad"></i>
+                    </div>
+                    <h3>游戏与产品思维</h3>
+                    <p>热爱休闲益智游戏，具备良好的审美与玩法理解，能从用户视角思考AI工具的应用场景。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>关于我</h2>
+                <p>四川农业大学物联网工程专业大三学生，对AI Agent与AIGC应用充满热情的学习者和实践者。</p>
+            </div>
+            
+            <div style="max-width: 800px; margin: 0 auto; background-color: white; padding: 40px; border-radius: var(--border-radius); box-shadow: var(--box-shadow);">
+                <p style="margin-bottom: 20px; font-size: 1.1rem;">
+                    我是<b>钟莹莹</b>，一名物联网工程专业的本科生。我热衷于探索AI技术的实际应用，并通过独立项目将想法付诸实践。
+                </p>
+                
+                <p style="margin-bottom: 20px;">
+                    在<strong>“AImoon”英语学习智能体</strong>项目中，我深入理解了如何通过结构化Prompt设计实现自然语言交互，并针对特定场景优化对话流程。这让我掌握了AI Agent从构思到落地的完整流程。
+                </p>
+                
+                <p style="margin-bottom: 20px;">
+                    在<strong>“番茄保卫战”AIGC动画项目</strong>中，我探索了AI生成内容与创意设计的结合，将即梦AI生成的视觉素材转化为生动的动态演示。这个项目激发了我对游戏AIGC领域的浓厚兴趣。
+                </p>
+
+                <p style="margin-bottom: 20px;">
+                    在<strong>基于DeepSeek API的智能系统</strong>开发中，我锻炼了系统架构思维和工程化能力，从需求分析、模块设计到安全部署，完成了一个健壮可用的AI应用。
+                </p>
+                
+                <p>
+                    我目前正在积极学习ComfyUI等专业AIGC工具，希望将更强的可控性和工作流思维融入创作。我期待能在AI应用、游戏AIGC或产品开发相关的实习岗位中，将我的技术热情、学习能力和项目经验转化为实际价值。
+                </p>
+                
+                <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #eee;">
+                    <h4 style="margin-bottom: 15px; color: var(--secondary);">能力总结：</h4>
+                    <ul style="columns: 2; list-style-position: inside;">
+                        <li>AI Agent设计与开发</li>
+                        <li>Prompt工程与优化</li>
+                        <li>AIGC工具应用与实践</li>
+                        <li>Python编程与系统架构</li>
+                        <li>项目全流程执行与管理</li>
+                        <li>快速学习与问题解决</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="contact" style="padding-bottom: 40px;">
+        <div class="container">
+            <div class="section-title">
+                <h2>联系方式</h2>
+                <p>欢迎与我交流AI项目、AIGC应用或实习机会</p>
+            </div>
+            
+            <div style="text-align: center; max-width: 600px; margin: 0 auto;">
+                <div class="contact-info">
+                    <a href="mailto:3337996907@qq.com">
+                        <i class="fas fa-envelope"></i> 3337996907@qq.com
+                    </a>
+                    <a href="tel:19048055376">
+                        <i class="fas fa-phone"></i> 19048055376 (微信同号)
+                    </a>
+                    <a href="https://github.com/MOON-0805" target="_blank">
+                        <i class="fab fa-github"></i> GitHub: MOON-0805
+                    </a>
+                </div>
+                
+                <p style="margin-top: 30px; color: var(--gray);">
+                    如果您对我的项目感兴趣，或希望了解更多细节，请随时通过以上方式联系我。我目前正在寻求AI Agent开发或游戏AIGC方向的实习机会。
+                </p>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="logo" style="font-size: 1.8rem;">
+                    <i class="fas fa-robot"></i>
+                    <h3 style="color: white;">钟莹莹 | AI项目作品集</h3>
+                </div>
+                
+                <div class="copyright">
+                    <p>&copy; 2025 钟莹莹. 本作品集展示个人项目经验，持续更新中。</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- 项目详情弹窗 -->
+    <div id="project-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); z-index: 2000; justify-content: center; align-items: center; padding: 20px;">
+        <div id="modal-content" style="background-color: white; border-radius: var(--border-radius); max-width: 800px; width: 100%; max-height: 90vh; overflow-y: auto; position: relative;">
+            <button onclick="closeModal()" style="position: absolute; top: 15px; right: 15px; background: none; border: none; font-size: 1.5rem; color: var(--gray); cursor: pointer; z-index: 10;">×</button>
+            <div id="modal-body" style="padding: 40px;"></div>
+        </div>
+    </div>
+    
+    <script>
+        // 项目详情数据
+        const projectDetails = {
+            1: {
+                content: `
+                    <h2 style="color: var(--secondary); margin-bottom: 20px;">AI英语学习陪练 "AImoon"</h2>
+                    
+                    <div style="margin-bottom: 25px;">
+                        <h3 style="color: var(--primary); margin-bottom: 10px;">项目概述</h3>
+                        <p>这是一个使用Coze平台搭建的面向初中生的英语学习陪练智能体，旨在通过自然、口语化的对话帮助初中生提升英语学习兴趣与能力。<strong><a href="https://www.coze.cn/s/KdtdlD47z4w/" target="_blank">点击这里体验AImoon智能体</a></strong></p>
+                    </div>
+                    
+                    <div style="margin-bottom: 25px;">
+                        <h3 style="color: var(--primary); margin-bottom: 10px;">核心功能</h3>
+                        <ul style="margin-left: 20px;">
+                            <li><strong>主动发起话题</strong>：根据学习阶段主动开启英语学习交流</li>
+                            <li><strong>口语化简洁回答</strong>：用初中生能理解的简单语言解答问题</li>
+                            <li><strong>语音对话交互</strong>：支持语音输入输出，识别准确，回复自然</li>
+                            <li><strong>学习资源推荐</strong>：分享英语歌曲、电影片段等有趣学习资源</li>
+                            <li><strong>插件集成</strong>：集成树图、教育知识图谱、单词朗读等实用插件</li>
+                        </ul>
+                    </div>
+                    
+                    <div style="margin-bottom: 25px;">
+                        <h3 style="color: var(--primary); margin-bottom: 10px;">技术实现</h3>
+                        <p><strong>平台：</strong>Coze</p>
+                        <p><strong>核心模型：</strong>DeepSeek-R1</p>
+                        <p><strong>核心技术：</strong>结构化Prompt工程、自然语言处理、语音识别与合成</p>
+                        <p><strong>角色设定：</strong>定义了角色性格、目标、技能与工作流，确保对话围绕初中英语学习有效进行</p>
+                    </div>
+                    
+                    <div style="margin-bottom: 25px;">
+                        <h3 style="color: var(--primary); margin-bottom: 10px;">项目亮点</h3>
+                        <ul style="margin-left: 20px;">
+                            <li>针对特定用户群体（初中生）设计交互方式</li>
+                            <li>通过Prompt工程实现自然、连贯的对话体验</li>
+                            <li>集成多个教育类插件，增强实用功能</li>
+                            <li>教育场景的AI应用实践，具备实际应用价值</li>
+                            <li>可扩展为其他学科或场景的学习陪练原型</li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h3 style="color: var(--primary); margin-bottom: 10px;">能力体现</h3>
+                        <div class="project-tags">
+                            <span class="tag">需求分析</span>
+                            <span class="tag">Prompt工程</span>
+                            <span class="tag">对话设计</span>
+                            <span class="tag">用户体验</span>
+                            <span class="tag">教育科技</span>
+                            <span class="tag">插件集成</span>
+                        </div>
+                    </div>
+                `
+            },
+            2: {
+                content: `
+                    <h2 style="color: var(--secondary); margin-bottom: 20px;">"番茄保卫战"游戏AIGC动画</h2>
+                    
+                    <div style="margin-bottom: 25px;">
+                        <h3 style="color: var(--primary); margin-bottom: 10px;">项目概述</h3>
+                        <p>这是一个使用即梦AI生成游戏界面素材，并通过动画制作展示游戏机制与交互的AIGC演示项目。项目展示了从AI生成到动画制作的全流程能力。<strong><a href="https://jimeng.jianying.com/s/zr4wtA_vjuw/" target="_blank">点击这里访问我的即梦AI主页</a></strong></p>
+                    </div>
+                    
+                    <div style="margin-bottom: 25px;">
+                        <h3 style="color: var(--primary); margin-bottom: 10px;">视觉设计元素</h3>
+                        <ul style="margin-left: 20px;">
+                            <li><strong>保卫对象</strong>：可爱的红色番茄（拟人化设计，大眼睛和微笑）</li>
+                            <li><strong>怪兽设计</strong>：绿色史莱姆、蓝色幽灵、紫色小恶魔</li>
+                            <li><strong>守卫武器</strong>：太阳花炮塔、冰冻塔、火焰塔</li>
+                            <li><strong>界面设计</strong>：游戏标题、金币/生命值显示、控制按钮</li>
+                            <li><strong>整体风格</strong>：色彩饱和度高，简洁可爱的卡通风格</li>
+                        </ul>
+                    </div>
+                    
+                    <div style="margin-bottom: 25px;">
+                        <h3 style="color: var(--primary); margin-bottom: 10px;">动画与AIGC流程</h3>
+                        <ul style="margin-left: 20px;">
+                            <li><strong>AIGC素材生成</strong>：使用即梦AI生成所有角色、场景和UI元素</li>
+                            <li><strong>角色动画</strong>：设计怪兽移动（弹跳、飘动、飞行）、番茄表情变化</li>
+                            <li><strong>攻击特效</strong>：制作阳光射线、冰冻效果、火焰喷射等动态效果</li>
+                            <li><strong>节奏控制</strong>：在10秒内完整展示游戏核心机制与视觉风格</li>
+                        </ul>
+                    </div>
+                    
+                    <div style="margin-bottom: 25px;">
+                        <h3 style="color: var(--primary); margin-bottom: 10px;">项目价值</h3>
+                        <ul style="margin-left: 20px;">
+                            <li>探索了AIGC在游戏美术前期和快速原型设计中的应用</li>
+                            <li>展示了从AI生成到成品输出的完整创意工作流</li>
+                            <li>体现了对游戏机制、视觉风格和动态表达的综合理解</li>
+                            <li>为“游戏AIGC”方向的学习与实践提供了具体案例</li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h3 style="color: var(--primary); margin-bottom: 10px;">能力体现</h3>
+                        <div class="project-tags">
+                            <span class="tag">AIGC工具应用</span>
+                            <span class="tag">游戏视觉设计</span>
+                            <span class="tag">动效设计</span>
+                            <span class="tag">视频制作</span>
+                            <span class="tag">创意工作流</span>
+                            <span class="tag">快速原型</span>
+                        </div>
+                    </div>
+                `
+            },
+            3: {
+                content: `
+                    <h2 style="color: var(--secondary); margin-bottom: 20px;">基于DeepSeek API的智能Agent系统</h2>
+                    
+                    <div style="margin-bottom: 25px;">
+                        <h3 style="color: var(--primary); margin-bottom: 10px;">项目概述</h3>
+                        <p>一个采用混合架构的本地智能助手系统，能理解用户意图，并智能选择本地逻辑或调用DeepSeek API来处理计算、天气、问答、时间等多种任务。<strong><a href="https://github.com/MOON-0805/smart-ai-agent" target="_blank">点击这里查看GitHub项目源码</a></strong></p>
+                    </div>
+                    
+                    <div style="margin-bottom: 25px;">
+                        <h3 style="color: var(--primary); margin-bottom: 10px;">系统架构</h3>
+                        <ul style="margin-left: 20px;">
+                            <li><strong>混合架构</strong>：“本地优先 + API 补充”设计，平衡响应速度、成本与能力</li>
+                            <li><strong>智能路由</strong>：通过意图识别模块动态选择最优处理策略（本地处理或调用API）</li>
+                            <li><strong>模块化设计</strong>：任务分类器、本地处理器、API调用器、结果整合器等模块分离</li>
+                        </ul>
+                    </div>
+                    
+                    <div style="margin-bottom: 25px;">
+                        <h3 style="color: var(--primary); margin-bottom: 10px;">工程化实践</h3>
+                        <ul style="margin-left: 20px;">
+                            <li><strong>健壮性设计</strong>：实现完整的错误处理链，包括超时控制、网络检测、服务降级与重试</li>
+                            <li><strong>安全性</strong>：通过配置模板与gitignore管理API密钥，确保零泄露</li>
+                            <li><strong>可维护性</strong>：代码模块化，配置与逻辑分离，提供结构化日志与用户反馈机制</li>
+                            <li><strong>部署</strong>：完成从需求分析、设计、开发、文档编写到GitHub部署的全流程</li>
+                        </ul>
+                    </div>
+                    
+                    <div style="margin-bottom: 25px;">
+                        <h3 style="color: var(--primary); margin-bottom: 10px;">技术栈</h3>
+                        <div class="project-tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">DeepSeek API</span>
+                            <span class="tag">Requests</span>
+                            <span class="tag">正则表达式</span>
+                            <span class="tag">Git</span>
+                            <span class="tag">Linux</span>
+                            <span class="tag">日志管理</span>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 style="color: var(--primary); margin-bottom: 10px;">能力体现</h3>
+                        <div class="project-tags">
+                            <span class="tag">系统架构设计</span>
+                            <span class="tag">API集成</span>
+                            <span class="tag">工程化思维</span>
+                            <span class="tag">问题分解</span>
+                            <span class="tag">全流程开发</span>
+                        </div>
+                    </div>
+                `
+            }
+        };
+        
+        // 显示项目详情弹窗
+        function showProjectDetails(projectId) {
+            const modal = document.getElementById('project-modal');
+            const modalBody = document.getElementById('modal-body');
+            
+            if (projectDetails[projectId]) {
+                modalBody.innerHTML = projectDetails[projectId].content;
+                modal.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            }
+        }
+        
+        // 关闭弹窗
+        function closeModal() {
+            const modal = document.getElementById('project-modal');
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+        
+        // 点击弹窗外部关闭
+        document.getElementById('project-modal').addEventListener('click', function(e) {
+            if (e.target.id === 'project-modal') {
+                closeModal();
+            }
+        });
+        
+        // 导航链接平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
