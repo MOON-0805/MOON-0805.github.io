@@ -15,7 +15,7 @@
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
             background: linear-gradient(135deg, #f5f7fa 0%, #e9eef5 100%);
             color: #1a202c;
-            line-height: 1.5;
+            line-height: 1.6;
             scroll-behavior: smooth;
         }
 
@@ -120,6 +120,18 @@
             box-shadow: 0 20px 25px -12px rgba(0,0,0,0.15);
         }
 
+        .card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 8px;
+        }
+        .card .subtitle {
+            font-size: 0.9rem;
+            color: #2d4a6e;
+            font-weight: 600;
+            margin-bottom: 12px;
+            display: block;
+        }
+
         /* 标签 */
         .tech-tag {
             background: #eef2ff;
@@ -135,7 +147,7 @@
 
         .project-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
             gap: 28px;
             margin-top: 32px;
         }
@@ -224,6 +236,13 @@
             margin-top: 20px;
         }
 
+        .project-links {
+            margin-top: 20px;
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
         @media (max-width: 700px) {
             .nav-links {
                 gap: 20px;
@@ -277,57 +296,61 @@
                 <div class="project-grid">
                     <!-- 项目1 电信智能客服助手 -->
                     <div class="card">
-                        <h3 style="font-size: 1.35rem;">📱 电信智能客服助手</h3>
-                        <div style="margin: 12px 0;">
+                        <h3>📱 电信智能客服助手</h3>
+                        <span class="subtitle">独立开发</span>
+                        <div style="margin: 8px 0 12px;">
                             <span class="tech-tag">Dify</span>
                             <span class="tech-tag">DeepSeek API</span>
                             <span class="tech-tag">Ollama</span>
                             <span class="tech-tag">FastAPI</span>
                             <span class="tech-tag">Docker</span>
                         </div>
-                        <ul style="margin-left: 20px; color: #4a5568; flex:1;">
-                            <li>基于 Dify 搭建电信客服 PoC，实现意图识别与多轮对话记忆</li>
-                            <li>完成 20+ 测试用例评测，Bad Case 分析优化，核心业务成功率 100%</li>
-                            <li>产出 PRD、流程图、评测报告等完整产品文档</li>
+                        <ul style="margin-left: 20px; color: #4a5568; flex:1; list-style-type: disc;">
+                            <li>完成竞品分析收敛话费/改套餐/宽带报修3大核心场景，搭建四层标准化Prompt体系，Ollama做混合检索、DeepSeek负责对话推理</li>
+                            <li>设计会话变量实现跨轮次记忆，划分4类对话分支，20+边界测试用例，搭建Bad Case分级复盘迭代流程，意图识别准确率90%、核心业务成功率100%</li>
+                            <li>利用飞书文档产出PRD、业务流程图、AI评测全套规范文档，并部署至GitHub展示</li>
                         </ul>
-                        <div style="margin-top: 20px;">
+                        <div class="project-links">
                             <a href="https://github.com/MOON-0805/telecom-ai-assistant" target="_blank" class="btn">GitHub 项目</a>
                         </div>
                     </div>
 
-                    <!-- 项目2 智能AI Agent系统 -->
+                    <!-- 项目2 OfferCraft -->
                     <div class="card">
-                        <h3 style="font-size: 1.35rem;">🤖 智能AI Agent系统</h3>
-                        <div style="margin: 12px 0;">
+                        <h3>🎯 OfferCraft 求职AI工具</h3>
+                        <span class="subtitle">独立开发</span>
+                        <div style="margin: 8px 0 12px;">
+                            <span class="tech-tag">Coze</span>
+                            <span class="tech-tag">DeepSeek API</span>
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">FastAPI</span>
+                        </div>
+                        <ul style="margin-left: 20px; color: #4a5568; flex:1; list-style-type: disc;">
+                            <li>搭建7页面闭环求职工具，设计状态驱动+快照溯源数据互通架构，自研简历-JD加权匹配打分模型</li>
+                            <li>落地「Prompt硬约束+后端实体校验」双层幻觉风控，杜绝简历虚构经历；标准化JD多维度结构化解析</li>
+                            <li>邀请10名应届生自测，针对改写脱离原文、JD解析浅层两大痛点完成产品迭代优化</li>
+                        </ul>
+                        <div class="project-links">
+                            <a href="https://github.com/MOON-0805/offercraft" target="_blank" class="btn">GitHub 项目</a>
+                        </div>
+                    </div>
+
+                    <!-- 项目3 通用智能AI Agent系统 -->
+                    <div class="card">
+                        <h3>🤖 通用智能AI Agent系统</h3>
+                        <span class="subtitle">独立开发</span>
+                        <div style="margin: 8px 0 12px;">
                             <span class="tech-tag">Python</span>
                             <span class="tech-tag">DeepSeek API</span>
                             <span class="tech-tag">Linux</span>
                             <span class="tech-tag">Git</span>
                         </div>
-                        <ul style="margin-left: 20px; color: #4a5568; flex:1;">
-                            <li>“本地优先+API补充”混合架构，设计任务分类与智能路由</li>
-                            <li>支持计算、天气、问答等多类任务，实现完整错误处理与安全机制</li>
-                            <li>从需求分析到 GitHub 部署的全流程工程实践</li>
+                        <ul style="margin-left: 20px; color: #4a5568; flex:1; list-style-type: disc;">
+                            <li>关键词前置匹配实现任务智能路由，采用本地+云端混合架构，覆盖计算/天气/问答多类任务</li>
+                            <li>搭建全链路异常兜底处理与安全校验机制，模块化开发完成全流程落地并开源</li>
                         </ul>
-                        <div style="margin-top: 20px;">
+                        <div class="project-links">
                             <a href="https://github.com/MOON-0805/smart-ai-agent" target="_blank" class="btn">GitHub 项目</a>
-                        </div>
-                    </div>
-
-                    <!-- 项目3 Coze英语学习智能体 -->
-                    <div class="card">
-                        <h3 style="font-size: 1.35rem;">📖 英语学习智能体 “AImoon”</h3>
-                        <div style="margin: 12px 0;">
-                            <span class="tech-tag">Coze</span>
-                            <span class="tech-tag">DeepSeek-R1</span>
-                            <span class="tech-tag">Prompt工程</span>
-                        </div>
-                        <ul style="margin-left: 20px; color: #4a5568; flex:1;">
-                            <li>为初中生设计的英语陪练 Agent，支持主动对话、语音交互与语法讲解</li>
-                            <li>集成教育知识图谱、单词朗读等插件，优化对话流程与用户体验</li>
-                        </ul>
-                        <div style="margin-top: 20px;">
-                            <a href="https://www.coze.cn/s/KdtdlD47z4w/" target="_blank" class="btn">体验链接</a>
                         </div>
                     </div>
                 </div>
